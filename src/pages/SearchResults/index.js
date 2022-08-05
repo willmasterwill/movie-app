@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-import { Box, Container } from "@mui/material";
+import { Box, Container, IconButton } from "@mui/material";
 
 import CloseIcon from "@mui/icons-material/Close";
 
 import Services from "../../services";
-import { CardMovie, MenuBar } from "../../components";
+import { CardMovie, MenuBar, MenuBarChildren } from "../../components";
 
 const SearchResults = () => {
 	const [movies, setMovies] = useState([]);
@@ -34,6 +34,13 @@ const SearchResults = () => {
 				buttonClick={backButton}
 				buttonIcon={() => <CloseIcon />}
 			/>
+
+			<MenuBarChildren text={"Search Results: " + searchText}>
+				<IconButton color="info" onClick={backButton}>
+					<CloseIcon />
+				</IconButton>
+			</MenuBarChildren>
+
 			<Container>
 				{movies.length > 0 &&
 					movies.map((movie, index) => (
