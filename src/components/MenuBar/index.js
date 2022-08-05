@@ -7,11 +7,7 @@ const MenuBar = ({ text, buttonClick, buttonIcon: ButtonIcon }) => {
 				<Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
 					{text}
 				</Typography>
-				<IconButton
-					variant="outlined"
-					color="warning"
-					onClick={buttonClick}
-				>
+				<IconButton color="warning" onClick={buttonClick}>
 					<ButtonIcon />
 				</IconButton>
 			</Toolbar>
