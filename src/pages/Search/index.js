@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useContext } from "react";
+import { useNavigate, Navigate } from "react-router-dom";
+
+import { AuthContext } from "../../context/AuthContext";
 
 import {
 	Box,
@@ -21,6 +23,8 @@ const Search = () => {
 	const [searchText, setSearchText] = useState("");
 	const history = useNavigate();
 
+	const { user, logout, isAuth } = useContext(AuthContext);
+
 	function searchInput(event) {
 		setSearchText(event.target.value);
 	}
@@ -30,19 +34,24 @@ const Search = () => {
 		history(`/search/${searchText}`);
 	}
 
-	function hola() {
-		console.log("HOLA");
+	function logoutButton() {
+		logout();
+		history("/");
+	}
+
+	if (!isAuth()) {
+		return <Navigate to="/" />;
 	}
 
 	return (
 		<Box>
 			<MenuBar
-				text={"Linder"}
-				buttonClick={hola}
+				text={user.name}
+				buttonClick={logoutButton}
 				buttonIcon={() => <LogoutIcon />}
 			/>
 			<Container maxWidth="sm">
-				<Grid container mt={3}>
+				<Grid container mt={6}>
 					<Grid item xs={12}>
 						<Card>
 							<CardContent>

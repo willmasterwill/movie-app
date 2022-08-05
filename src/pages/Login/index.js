@@ -1,3 +1,7 @@
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import { Navigate } from "react-router-dom";
+
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -10,14 +14,19 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
 const Login = () => {
+	const { login, isAuth } = useContext(AuthContext);
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		const data = new FormData(event.currentTarget);
-		console.log({
-			email: data.get("email"),
-			password: data.get("password"),
-		});
+		login(data.get("user"), data.get("pass"));
 	};
+
+	console.log(isAuth());
+
+	if (isAuth()) {
+		return <Navigate to="/search" />;
+	}
 
 	return (
 		<Container component="main" maxWidth="xs">
@@ -34,7 +43,7 @@ const Login = () => {
 					<LockOutlinedIcon />
 				</Avatar>
 				<Typography component="h1" variant="h5">
-					Sign in
+					Sign In
 				</Typography>
 				<Box
 					component="form"
@@ -46,17 +55,16 @@ const Login = () => {
 						margin="normal"
 						required
 						fullWidth
-						id="email"
-						label="Email Address"
-						name="email"
-						autoComplete="email"
+						id="user"
+						label="User"
+						name="user"
 						autoFocus
 					/>
 					<TextField
 						margin="normal"
 						required
 						fullWidth
-						name="password"
+						name="pass"
 						label="Password"
 						type="password"
 						id="password"
@@ -72,7 +80,7 @@ const Login = () => {
 						variant="contained"
 						sx={{ mt: 3, mb: 2 }}
 					>
-						Sign In
+						Login
 					</Button>
 				</Box>
 			</Box>
