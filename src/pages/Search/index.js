@@ -48,7 +48,7 @@ const Search = () => {
 			<MenuBar
 				text={user.name}
 				buttonClick={logoutButton}
-				buttonIcon={() => <LogoutIcon />}
+				buttonIcon={<LogoutIcon />}
 			/>
 			<Container maxWidth="sm">
 				<Grid container mt={6}>

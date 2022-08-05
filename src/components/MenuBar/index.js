@@ -1,6 +1,6 @@
 import { AppBar, Toolbar, Typography, IconButton } from "@mui/material";
 
-const MenuBar = ({ text, buttonClick, buttonIcon: ButtonIcon }) => {
+const MenuBar = ({ text, buttonClick, buttonIcon }) => {
 	return (
 		<AppBar position="static">
 			<Toolbar>
@@ -8,7 +8,7 @@ const MenuBar = ({ text, buttonClick, buttonIcon: ButtonIcon }) => {
 					{text}
 				</Typography>
 				<IconButton color="warning" onClick={buttonClick}>
-					<ButtonIcon />
+					{buttonIcon}
 				</IconButton>
 			</Toolbar>
 		</AppBar>

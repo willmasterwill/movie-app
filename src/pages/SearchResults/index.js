@@ -32,7 +32,7 @@ const SearchResults = () => {
 			<MenuBar
 				text={"Search Results: " + searchText}
 				buttonClick={backButton}
-				buttonIcon={() => <CloseIcon />}
+				buttonIcon={<CloseIcon />}
 			/>
 
 			<MenuBarChildren text={"Search Results: " + searchText}>
