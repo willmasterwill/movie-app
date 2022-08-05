@@ -1,17 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-import {
-	Box,
-	AppBar,
-	Toolbar,
-	Typography,
-	Button,
-	Container,
-} from "@mui/material";
+import { Box, Container } from "@mui/material";
+
+import CloseIcon from "@mui/icons-material/Close";
 
 import Services from "../../services";
-import { CardMovie } from "../../components";
+import { CardMovie, MenuBar } from "../../components";
 
 const SearchResults = () => {
 	const [movies, setMovies] = useState([]);
@@ -34,24 +29,11 @@ const SearchResults = () => {
 
 	return (
 		<Box>
-			<AppBar position="static">
-				<Toolbar>
-					<Typography
-						variant="h6"
-						component="div"
-						sx={{ flexGrow: 1 }}
-					>
-						Search Results: "{searchText}"
-					</Typography>
-					<Button
-						variant="outlined"
-						color="error"
-						onClick={backButton}
-					>
-						Back
-					</Button>
-				</Toolbar>
-			</AppBar>
+			<MenuBar
+				text={"Search Results: " + searchText}
+				buttonClick={backButton}
+				buttonIcon={() => <CloseIcon />}
+			/>
 			<Container>
 				{movies.length > 0 &&
 					movies.map((movie, index) => (

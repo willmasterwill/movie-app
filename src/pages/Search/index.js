@@ -3,9 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import {
 	Box,
-	AppBar,
-	Toolbar,
-	IconButton,
 	Container,
 	Grid,
 	Card,
@@ -15,6 +12,8 @@ import {
 	TextField,
 	Button,
 } from "@mui/material";
+
+import { MenuBar } from "../../components";
 
 import LogoutIcon from "@mui/icons-material/Logout";
 
@@ -31,22 +30,17 @@ const Search = () => {
 		history(`/search/${searchText}`);
 	}
 
+	function hola() {
+		console.log("HOLA");
+	}
+
 	return (
 		<Box>
-			<AppBar position="static">
-				<Toolbar>
-					<Typography
-						variant="h6"
-						component="div"
-						sx={{ flexGrow: 1 }}
-					>
-						Bruno Diaz
-					</Typography>
-					<IconButton variant="outlined" color="warning">
-						<LogoutIcon />
-					</IconButton>
-				</Toolbar>
-			</AppBar>
+			<MenuBar
+				text={"Linder"}
+				buttonClick={hola}
+				buttonIcon={() => <LogoutIcon />}
+			/>
 			<Container maxWidth="sm">
 				<Grid container mt={3}>
 					<Grid item xs={12}>
