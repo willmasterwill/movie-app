@@ -3,16 +3,17 @@ import { createContext, useState } from "react";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-	const [user, setUser] = useState({});
+	const userStorage = JSON.parse(localStorage.getItem("movieapp.user")) || {};
+
+	const [user, setUser] = useState(userStorage);
 
 	function login(user, pass) {
-		console.log(user);
-		console.log(pass);
 		if (user === "admin" && pass === "1234") {
 			const authUser = {
 				user: user,
 				name: "Bruno Diaz",
 			};
+			localStorage.setItem("movieapp.user", JSON.stringify(authUser));
 			setUser(authUser);
 			return true;
 		}
@@ -20,6 +21,7 @@ export const AuthProvider = ({ children }) => {
 	}
 
 	function logout() {
+		localStorage.removeItem("movieapp.user");
 		setUser({});
 	}
 
