@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import { styled, useTheme } from "@mui/material/styles";
 import { Outlet } from "react-router-dom";
 import {
@@ -90,6 +91,8 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const MainLayout = () => {
+  const { user, logout } = useContext(AuthContext);
+
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
@@ -113,7 +116,7 @@ const MainLayout = () => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+            {user.name}
           </Typography>
         </Toolbar>
       </AppBar>
