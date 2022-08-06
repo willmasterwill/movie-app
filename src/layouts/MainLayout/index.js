@@ -165,11 +165,11 @@ const MainLayout = () => {
 						text="Search"
 						action={() => history("/search")}
 					/>
-					{/* Favorite */}
+					{/* Favorites */}
 					<DrawerButton
 						icon={<FavoriteIcon />}
-						text="Favorite"
-						action={() => history("/favorite")}
+						text="Favorites"
+						action={() => history("/favorites")}
 					/>
 					{/* Logout */}
 					<DrawerButton
