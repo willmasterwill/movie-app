@@ -25,7 +25,7 @@ const CardMovie = ({ movie }) => {
     <Grid item xs={12} md={4} my={3}>
       <Card
         sx={{
-          height: 400,
+          height: 430,
         }}
       >
         <CardMedia
