@@ -32,6 +32,11 @@ export const MovieFavoriteProvider = ({ children }) => {
 		saveInLocalStorage(newFavoriteMovies);
 	};
 
+	const cleanFavorites = () => {
+		setFavoriteMovies([]);
+		saveInLocalStorage([]);
+	};
+
 	const saveInLocalStorage = (favorites) => {
 		localStorage.setItem("movieapp.favorites", JSON.stringify(favorites));
 	};
@@ -55,6 +60,7 @@ export const MovieFavoriteProvider = ({ children }) => {
 				addToFavorite,
 				isIncludeInFavorites,
 				removeFavorite,
+				cleanFavorites,
 			}}
 		>
 			{children}
