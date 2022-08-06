@@ -32,7 +32,14 @@ const SearchResults = () => {
         </IconButton>
         <Grid container spacing={3}>
           <Grid item xs={12}>
-            <Typography variant="h6">Search / {searchText}</Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                textTransform: "capitalize",
+              }}
+            >
+              Search / {searchText}
+            </Typography>
           </Grid>
           {movies.length > 0 &&
             movies.map((movie, index) => (

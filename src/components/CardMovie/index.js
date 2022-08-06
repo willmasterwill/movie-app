@@ -5,9 +5,22 @@ import {
   Grid,
   Typography,
   Chip,
+  Rating,
 } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 const CardMovie = ({ movie }) => {
+  const StyledRating = styled(Rating)({
+    "& .MuiRating-iconFilled": {
+      color: "#ff6d75",
+    },
+    "& .MuiRating-iconHover": {
+      color: "#ff3d47",
+    },
+  });
+
   return (
     <Grid item xs={12} md={4} my={3}>
       <Card
@@ -40,6 +53,13 @@ const CardMovie = ({ movie }) => {
                 color="success"
                 size="small"
                 variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <StyledRating
+                max={1}
+                icon={<FavoriteIcon fontSize="inherit" />}
+                emptyIcon={<FavoriteBorderIcon fontSize="inherit" />}
               />
             </Grid>
           </Grid>
