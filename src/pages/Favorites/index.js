@@ -4,8 +4,27 @@ import { CardMovie } from "../../components";
 
 import { MovieFavoriteContext } from "../../context";
 
+import Swal from "sweetalert2";
+
 const Favorites = () => {
 	const { favoriteMovies, cleanFavorites } = useContext(MovieFavoriteContext);
+
+	function cleanButton() {
+		Swal.fire({
+			title: "Clean all Favorites?",
+			text: "You won't be able to revert this!",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Clean!",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				cleanFavorites();
+				Swal.fire("Cleaned!", "0 favorited movies.", "success");
+			}
+		});
+	}
 
 	return (
 		<Box>
@@ -26,7 +45,7 @@ const Favorites = () => {
 							<Button
 								variant="outlined"
 								color="warning"
-								onClick={cleanFavorites}
+								onClick={cleanButton}
 							>
 								Clean
 							</Button>
