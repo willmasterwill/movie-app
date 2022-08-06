@@ -12,9 +12,9 @@ export const MovieFavoriteProvider = ({ children }) => {
 
 	const [favoriteMovies, setFavoriteMovies] = useState(favorites);
 
-	const addToFavorite = (id) => {
+	const addToFavorite = (movie) => {
 		const favorite = {
-			id,
+			movie,
 			created_favorited: new Date(),
 			user_id: user.id,
 		};
@@ -32,7 +32,8 @@ export const MovieFavoriteProvider = ({ children }) => {
 	// si el id existe en nuestro localStorage retornamos si no
 	const isIncludeInFavorites = (id) => {
 		const movie = favoriteMovies.findIndex(
-			(favorite) => favorite.id === id && favorite.user_id === user.id
+			(favorite) =>
+				favorite.movie.imdbID === id && favorite.user_id === user.id
 		);
 
 		// cuando findIndex no encuentra a un elemento retorna -1
