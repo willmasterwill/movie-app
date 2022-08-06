@@ -24,6 +24,14 @@ export const MovieFavoriteProvider = ({ children }) => {
 		saveInLocalStorage(favoriteMovies);
 	};
 
+	const removeFavorite = (id) => {
+		const newFavoriteMovies = favoriteMovies.filter(
+			(favorite) => favorite.movie.imdbID !== id
+		);
+		setFavoriteMovies(newFavoriteMovies);
+		saveInLocalStorage(newFavoriteMovies);
+	};
+
 	const saveInLocalStorage = (favorites) => {
 		localStorage.setItem("movieapp.favorites", JSON.stringify(favorites));
 	};
@@ -46,6 +54,7 @@ export const MovieFavoriteProvider = ({ children }) => {
 				favoriteMovies,
 				addToFavorite,
 				isIncludeInFavorites,
+				removeFavorite,
 			}}
 		>
 			{children}
